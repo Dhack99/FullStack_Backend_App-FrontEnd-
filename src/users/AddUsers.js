@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function AddUsers() {
+
+    const [user,setUser]=useState({
+        name:"",
+        username:"",
+        email:""
+    })
+
+    const{name,username,email}=user
+
+    const onInputChange =(e) =>{
+            setUser({...user,[e.target.name]:e.target.value});
+    };
+
   return (
     <div className='container'>
         <div className="row">
@@ -9,15 +22,15 @@ export default function AddUsers() {
            
             <div className='mb-3'>
                 <label htmlFor='Name' className='form-label'>Name</label>
-                <input type={"text"} className='form-control' placeholder='Enter Your name' name='name'/>
+                <input type={"text"} className='form-control' placeholder='Enter Your name' name='name' value={name} onChange={(e)=>onInputChange(e)}/>
             </div>
             <div className='mb-3'>
                 <label htmlFor='Name' className='form-label'>Username</label>
-                <input type={"text"} className='form-control' placeholder='Enter Your username' name='username'/>
+                <input type={"text"} className='form-control' placeholder='Enter Your username' name='username' value={username} onChange={(e)=>onInputChange(e)}/>
             </div>
             <div className='mb-3'>
                 <label htmlFor='Name' className='form-label'>Email</label>
-                <input type={"text"} className='form-control' placeholder='Enter Your email address' name='email'/>
+                <input type={"text"} className='form-control' placeholder='Enter Your email address' name='email' value={email} onChange={(e)=>onInputChange(e)}/>
             </div>
 
             <button type='submit' className='btn btn-outline-primary'>Submit</button>
